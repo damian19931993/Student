@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Save Employee</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Esto y lo de abajo es bootstrap. va a cargar bootsrap css styles -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+
+<body>
+
+  <div class="container">
+
+    <h3>Student Directory</h3>
+    <hr>
+
+    <p class="h4 mb-4">Save Student</p>
+
+    <form action="#" th:action="@{/save}"
+                     th:object="${student}" method="POST">
+      <!-- add hidden from field to handle the update-->
+
+      <input type="hidden" th:field="*{id}">
+
+      <input type="text" th:field="*{firstName}"
+             class="form-control mb-4 w-25" placeholder="First name">
+      <input type="text" th:field="*{lastName}"
+             class="form-control mb-4 w-25" placeholder="Last name">
+      <input type="text" th:field="*{email}"
+             class="form-control mb-4 w-25" placeholder="Email">
+
+      <button type="submit" class="btn btn-info col-2">Save</button>
+
+    </form>
+
+    <hr>
+
+
+
+    <a th:href="@{/}">Back to Student List</a>
+
+    <!-- Otras partes de tu página -->
+    <div th:if="${warningMessage}" class="warning-message" style="color: red; font-size: larger;">
+      <p th:text="${warningMessage}"></p>
+    </div>
+    <!-- Otras partes de tu página -->
+
+  </div>
+
+
+</body>
+
+
+</html>
